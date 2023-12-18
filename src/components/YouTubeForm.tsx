@@ -44,7 +44,7 @@ const YouTubeForm = (props: Props) => {
       };
     },
   });
-  const { register, control, handleSubmit, formState } = form;
+  const { register, control, handleSubmit, formState, watch } = form;
   //  const { name, ref, onChange, onBlur } = register("username");
   const { errors } = formState;
   const onSubmit = (data: FormValue) => {
@@ -56,8 +56,10 @@ const YouTubeForm = (props: Props) => {
     name: "phNums",
     control,
   });
+  const watchUsername = watch(["username", "age"]);
   return (
     <div>
+      {watchUsername}
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <label>UserName</label>
         <input
